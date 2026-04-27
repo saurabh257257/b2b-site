@@ -3,378 +3,150 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BazaarAI — India's AI-Powered B2B Marketplace</title>
-  <meta name="description" content="Find verified Indian suppliers instantly using natural language AI search. B2B marketplace powered by AI." />
+  <title>BazaarAI — India's B2B Marketplace</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-<!-- ── AUTH MODAL ── -->
-<div class="modal-overlay" id="authModal">
-  <div class="modal">
-    <button class="modal-close" id="modalClose">×</button>
-    <div class="modal-tabs">
-      <button class="modal-tab active" data-tab="buyer">I'm a Buyer</button>
-      <button class="modal-tab" data-tab="seller">I'm a Seller</button>
-    </div>
-
-    <div class="modal-body" id="tabBuyer">
-      <p class="modal-title">Sign in to BazaarAI</p>
-      <button class="btn-google" id="googleSignIn">
-        <svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-        Continue with Google
-      </button>
-      <div class="auth-divider"><span>or</span></div>
-      <div class="otp-step" id="otpStep1">
-        <label>Mobile Number
-          <div class="phone-input-row">
-            <span class="country-code">🇮🇳 +91</span>
-            <input type="tel" id="mobileInput" placeholder="Enter 10-digit number" maxlength="10" />
-          </div>
-        </label>
-        <button class="btn btn-primary btn-block" id="sendOtp">Send OTP</button>
-      </div>
-      <div class="otp-step hidden" id="otpStep2">
-        <p class="otp-hint">OTP sent to +91 <span id="mobileDisplay"></span></p>
-        <div class="otp-boxes" id="otpBoxes">
-          <input type="text" maxlength="1" class="otp-box" /><input type="text" maxlength="1" class="otp-box" /><input type="text" maxlength="1" class="otp-box" /><input type="text" maxlength="1" class="otp-box" /><input type="text" maxlength="1" class="otp-box" /><input type="text" maxlength="1" class="otp-box" />
-        </div>
-        <button class="btn btn-primary btn-block" id="verifyOtp">Verify & Sign In</button>
-        <p class="resend-link"><a href="#" id="resendOtp">Resend OTP</a></p>
-      </div>
-    </div>
-
-    <div class="modal-body hidden" id="tabSeller">
-      <p class="modal-title">Grow your business with AI</p>
-      <button class="btn-google" id="googleSignInSeller">
-        <svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-        Register with Google
-      </button>
-      <div class="auth-divider"><span>or</span></div>
-      <a href="seller.html" class="btn btn-primary btn-block">Create Seller Account →</a>
-    </div>
-  </div>
-</div>
-
-<!-- ── HEADER ── -->
-<header class="header" id="header">
-  <div class="container header-inner">
-    <a href="index.html" class="brand">
-      <div class="brand-icon">B</div>
-      <div class="brand-text">
-        <span class="brand-name">BazaarAI</span>
-        <span class="brand-sub">India's AI B2B Marketplace</span>
-      </div>
+<!-- HEADER -->
+<header class="header">
+  <div class="container hdr-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-icon">🏪</span>
+      <span class="logo-text">BazaarAI</span>
     </a>
-    <nav class="header-nav">
-      <a href="#how-it-works">How it Works</a>
+    <nav class="hdr-nav">
       <a href="#categories">Categories</a>
-      <a href="seller.html">For Sellers</a>
+      <a href="seller.html" class="hdr-seller-link">Are you a Seller? →</a>
     </nav>
-    <div class="header-actions">
-      <button class="btn btn-ghost-dark" id="loginBtn">Sign In</button>
-      <a href="seller.html" class="btn btn-accent">List Your Business</a>
-    </div>
-    <button class="burger" id="burger"><span></span><span></span><span></span></button>
   </div>
 </header>
 
-<!-- ── HERO ── -->
-<section class="hero" id="hero">
-  <div class="hero-bg-grid"></div>
-  <div class="container hero-inner">
-    <div class="hero-badge">
-      <span class="pulse-dot"></span>
-      AI-Powered · 50,000+ Verified Suppliers · India's #1 B2B Search
-    </div>
-    <h1>Find Any Supplier in India<br /><span class="gradient-text">Just Ask in Plain English</span></h1>
-    <p class="hero-sub">No more endless browsing. Describe what you need and our AI finds the best-matched verified suppliers instantly.</p>
+<!-- HERO / SEARCH -->
+<section class="hero">
+  <div class="hero-top">
+    <p class="hero-tag">🇮🇳 India's AI-Powered B2B Marketplace</p>
+    <h1>Find Any Supplier.<br />Just Describe What You Need.</h1>
+    <p class="hero-sub">Get verified supplier contacts &amp; WhatsApp in seconds — no sign-up needed.</p>
+  </div>
 
-    <!-- AI SEARCH BAR -->
-    <div class="search-container" id="searchContainer">
-      <div class="search-box">
-        <div class="search-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
-        </div>
-        <input type="text" class="search-input" id="searchInput" placeholder="" autocomplete="off" />
-        <div class="search-typewriter" id="searchTypewriter">Ask anything, e.g. "nickel strips for 18650 battery packs"</div>
-        <button class="search-btn" id="searchBtn">
-          <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
-        </button>
-      </div>
-      <div class="search-suggestions-row">
-        <span class="sugg-label">Try:</span>
-        <button class="sugg-chip" data-query="nickel strips supplier for battery manufacturing in India">Nickel strips for batteries</button>
-        <button class="sugg-chip" data-query="copper busbar manufacturer with custom dimensions Greater Noida">Copper busbars custom</button>
-        <button class="sugg-chip" data-query="industrial packaging materials HDPE bags Mumbai">HDPE packaging bags</button>
-        <button class="sugg-chip" data-query="steel fasteners bolts nuts bulk order Delhi NCR">Steel fasteners bulk</button>
-      </div>
+  <div class="search-wrap">
+    <div class="search-bar">
+      <span class="search-mag">🔍</span>
+      <input
+        type="text"
+        id="queryInput"
+        class="search-input"
+        placeholder="e.g. nickel strips 0.15mm for battery packs, Delhi"
+        autocomplete="off"
+      />
+      <button class="search-go" id="searchBtn">Search</button>
     </div>
-
-    <!-- HERO STATS -->
-    <div class="hero-stats">
-      <div class="hstat"><span class="hstat-n">50K+</span><span class="hstat-l">Verified Suppliers</span></div>
-      <div class="hstat-div"></div>
-      <div class="hstat"><span class="hstat-n">2M+</span><span class="hstat-l">Products Listed</span></div>
-      <div class="hstat-div"></div>
-      <div class="hstat"><span class="hstat-n">&lt; 2s</span><span class="hstat-l">AI Search Speed</span></div>
-      <div class="hstat-div"></div>
-      <div class="hstat"><span class="hstat-n">WhatsApp</span><span class="hstat-l">Direct Connect</span></div>
+    <div class="search-chips">
+      <span class="chip-label">Popular:</span>
+      <button class="chip" data-q="nickel strips for battery manufacturing">Nickel Strips</button>
+      <button class="chip" data-q="copper busbars custom size">Copper Busbars</button>
+      <button class="chip" data-q="HDPE packaging bags bulk order">HDPE Bags</button>
+      <button class="chip" data-q="steel fasteners bolts nuts wholesale">Steel Fasteners</button>
+      <button class="chip" data-q="aluminium extrusions profiles manufacturer">Aluminium Profiles</button>
     </div>
   </div>
 </section>
 
-<!-- ── AI SEARCH RESULTS (hidden initially) ── -->
-<section class="results-section hidden" id="resultsSection">
-  <div class="container results-layout">
-
-    <!-- AI CHAT PANEL -->
-    <div class="ai-panel">
-      <div class="ai-header">
-        <div class="ai-avatar">AI</div>
-        <div>
-          <p class="ai-name">BazaarAI Assistant</p>
-          <p class="ai-status" id="aiStatus">Searching suppliers…</p>
-        </div>
-      </div>
-      <div class="ai-messages" id="aiMessages"></div>
-      <div class="ai-input-row">
-        <input type="text" class="ai-followup" id="aiFollowup" placeholder="Refine your search…" />
-        <button class="search-btn small" id="aiFolowupBtn">
-          <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
-        </button>
-      </div>
-    </div>
-
-    <!-- RESULTS PANEL -->
-    <div class="results-panel">
-      <div class="results-toolbar">
-        <p class="results-count" id="resultsCount"></p>
-        <div class="results-filters">
-          <select class="filter-select" id="sortFilter">
-            <option value="relevance">Sort: Relevance</option>
-            <option value="rating">Sort: Rating</option>
-            <option value="response">Sort: Response Time</option>
-          </select>
-          <select class="filter-select" id="locationFilter">
-            <option value="">All Locations</option>
-            <option>Delhi NCR</option>
-            <option>Mumbai</option>
-            <option>Pune</option>
-            <option>Bangalore</option>
-            <option>Surat</option>
-            <option>Ahmedabad</option>
-          </select>
-        </div>
-      </div>
-      <div class="supplier-grid" id="supplierGrid"></div>
-      <div class="load-more-wrap">
-        <button class="btn btn-outline" id="loadMore">Load More Suppliers</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── HOW IT WORKS ── -->
-<section class="how-it-works" id="how-it-works">
+<!-- RESULTS (hidden until search) -->
+<section class="results-wrap" id="resultsWrap" style="display:none">
   <div class="container">
-    <div class="section-head">
-      <p class="eyebrow">Simple & Fast</p>
-      <h2>How BazaarAI Works</h2>
-      <p class="section-lead">From query to supplier contact in under 60 seconds.</p>
+    <div class="results-meta">
+      <p class="results-query" id="resultsQuery"></p>
+      <button class="clear-btn" id="clearBtn">← New Search</button>
     </div>
-    <div class="hiw-tabs">
-      <button class="hiw-tab active" data-role="buyer">For Buyers</button>
-      <button class="hiw-tab" data-role="seller">For Sellers</button>
-    </div>
-    <div class="hiw-steps" id="hiwBuyer">
-      <div class="hiw-step">
-        <div class="step-num">1</div>
-        <div class="step-icon">🔍</div>
-        <h4>Describe Your Need</h4>
-        <p>Type your requirement in plain English — product name, specs, quantity, location. No filters needed.</p>
-      </div>
-      <div class="hiw-connector"></div>
-      <div class="hiw-step">
-        <div class="step-num">2</div>
-        <div class="step-icon">🤖</div>
-        <h4>AI Finds Matches</h4>
-        <p>Our AI understands your intent, searches verified supplier data, and ranks the best matches.</p>
-      </div>
-      <div class="hiw-connector"></div>
-      <div class="hiw-step">
-        <div class="step-num">3</div>
-        <div class="step-icon">💬</div>
-        <h4>Connect via WhatsApp</h4>
-        <p>One click to open WhatsApp with the supplier. Your requirement is pre-filled. No back-and-forth.</p>
-      </div>
-    </div>
-    <div class="hiw-steps hidden" id="hiwSeller">
-      <div class="hiw-step">
-        <div class="step-num">1</div>
-        <div class="step-icon">📋</div>
-        <h4>Register & Upload</h4>
-        <p>Sign up with Google. Upload your catalog, product docs, and business details in any format.</p>
-      </div>
-      <div class="hiw-connector"></div>
-      <div class="hiw-step">
-        <div class="step-num">2</div>
-        <div class="step-icon">⚡</div>
-        <h4>AI Structures Your Data</h4>
-        <p>Our AI reads your documents and automatically creates searchable product listings, FAQs, and metadata.</p>
-      </div>
-      <div class="hiw-connector"></div>
-      <div class="hiw-step">
-        <div class="step-num">3</div>
-        <div class="step-icon">📈</div>
-        <h4>Get Qualified Leads</h4>
-        <p>Buyers with real intent find you through AI search. You get WhatsApp messages from ready-to-buy customers.</p>
-      </div>
-    </div>
+    <div class="ai-answer-box" id="aiAnswerBox"></div>
+    <div class="contacts-grid" id="contactsGrid"></div>
   </div>
 </section>
 
-<!-- ── CATEGORIES ── -->
+<!-- CATEGORIES -->
 <section class="categories" id="categories">
   <div class="container">
-    <div class="section-head">
-      <p class="eyebrow">Browse by Industry</p>
-      <h2>50+ Product Categories</h2>
-    </div>
+    <h2 class="sec-title">Browse by Category</h2>
     <div class="cat-grid">
-      <button class="cat-card" data-query="nickel strips copper busbars battery components manufacturer India">
-        <span class="cat-emoji">🔋</span>
-        <span class="cat-name">Battery Components</span>
-        <span class="cat-count">1,240 suppliers</span>
+      <button class="cat-tile" style="--c:#ff6b35" data-q="battery components nickel strip copper busbar manufacturer India">
+        <span>🔋</span><strong>Battery Components</strong><small>1,240+ suppliers</small>
       </button>
-      <button class="cat-card" data-query="industrial machinery CNC lathe machine manufacturer India">
-        <span class="cat-emoji">⚙️</span>
-        <span class="cat-name">Machinery & Equipment</span>
-        <span class="cat-count">8,500 suppliers</span>
+      <button class="cat-tile" style="--c:#0ea5e9" data-q="industrial machinery CNC equipment manufacturer India">
+        <span>⚙️</span><strong>Machinery</strong><small>8,500+ suppliers</small>
       </button>
-      <button class="cat-card" data-query="steel iron metal raw material supplier bulk India">
-        <span class="cat-emoji">🏭</span>
-        <span class="cat-name">Metals & Alloys</span>
-        <span class="cat-count">6,200 suppliers</span>
+      <button class="cat-tile" style="--c:#8b5cf6" data-q="steel iron aluminium metal raw material supplier bulk">
+        <span>🏭</span><strong>Metals & Alloys</strong><small>6,200+ suppliers</small>
       </button>
-      <button class="cat-card" data-query="industrial packaging HDPE PP bags material supplier">
-        <span class="cat-emoji">📦</span>
-        <span class="cat-name">Packaging Materials</span>
-        <span class="cat-count">4,800 suppliers</span>
+      <button class="cat-tile" style="--c:#10b981" data-q="HDPE PP industrial packaging material bags manufacturer">
+        <span>📦</span><strong>Packaging</strong><small>4,800+ suppliers</small>
       </button>
-      <button class="cat-card" data-query="electronic components PCB sensors industrial electronics manufacturer">
-        <span class="cat-emoji">💡</span>
-        <span class="cat-name">Electronics & Components</span>
-        <span class="cat-count">5,100 suppliers</span>
+      <button class="cat-tile" style="--c:#f59e0b" data-q="PCB electronic components sensors relays manufacturer India">
+        <span>💡</span><strong>Electronics</strong><small>5,100+ suppliers</small>
       </button>
-      <button class="cat-card" data-query="textile fabric yarn manufacturer wholesale India">
-        <span class="cat-emoji">🧵</span>
-        <span class="cat-name">Textiles & Fabrics</span>
-        <span class="cat-count">9,300 suppliers</span>
+      <button class="cat-tile" style="--c:#ef4444" data-q="cotton polyester textile fabric yarn wholesale manufacturer">
+        <span>🧵</span><strong>Textiles</strong><small>9,300+ suppliers</small>
       </button>
-      <button class="cat-card" data-query="chemical industrial raw material supplier manufacturer India">
-        <span class="cat-emoji">🧪</span>
-        <span class="cat-name">Chemicals & Polymers</span>
-        <span class="cat-count">3,700 suppliers</span>
+      <button class="cat-tile" style="--c:#06b6d4" data-q="industrial chemical raw material polymer supplier">
+        <span>🧪</span><strong>Chemicals</strong><small>3,700+ suppliers</small>
       </button>
-      <button class="cat-card" data-query="auto parts automobile components spare parts manufacturer India">
-        <span class="cat-emoji">🚗</span>
-        <span class="cat-name">Auto Components</span>
-        <span class="cat-count">7,400 suppliers</span>
+      <button class="cat-tile" style="--c:#84cc16" data-q="automobile auto parts engine components spare parts manufacturer">
+        <span>🚗</span><strong>Auto Parts</strong><small>7,400+ suppliers</small>
       </button>
     </div>
   </div>
 </section>
 
-<!-- ── AI DEMO ── -->
-<section class="ai-demo">
-  <div class="container ai-demo-inner">
-    <div class="ai-demo-text">
-      <p class="eyebrow">See it in Action</p>
-      <h2>AI That Understands B2B Context</h2>
-      <p class="section-lead">Unlike keyword search, BazaarAI understands what you actually need — specs, quantities, certifications, location.</p>
-      <ul class="ai-features">
-        <li><span class="feat-icon">🎯</span><div><strong>Intent Understanding</strong><p>Knows "bulk" means wholesale pricing. Knows "sample" means small MOQ.</p></div></li>
-        <li><span class="feat-icon">🗺️</span><div><strong>Location Aware</strong><p>Automatically prioritises suppliers near your delivery location.</p></div></li>
-        <li><span class="feat-icon">📄</span><div><strong>Spec Matching</strong><p>Matches your technical specs (dimensions, grade, purity) to supplier capabilities.</p></div></li>
-        <li><span class="feat-icon">⚡</span><div><strong>Instant Results</strong><p>No form filling. No category navigation. Results in under 2 seconds.</p></div></li>
-      </ul>
-    </div>
-    <div class="ai-demo-mockup">
-      <div class="mockup-window">
-        <div class="mockup-bar"><span></span><span></span><span></span></div>
-        <div class="mockup-chat" id="mockupChat">
-          <div class="mockup-msg user">I need pure nickel strips, 0.15mm thick, 8mm wide, min 100kg, Delhi delivery</div>
-          <div class="mockup-msg ai typing" id="mockupTyping">
-            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── TRUST ── -->
-<section class="trust-section">
+<!-- HOW IT WORKS -->
+<section class="how-section">
   <div class="container">
-    <div class="trust-grid">
-      <div class="trust-item">
-        <div class="trust-icon">🛡️</div>
-        <h4>Verified Suppliers</h4>
-        <p>GST, MSME, and business docs verified before listing.</p>
+    <h2 class="sec-title">How It Works</h2>
+    <div class="how-steps">
+      <div class="how-step">
+        <div class="how-num" style="background:#ff6b35">1</div>
+        <div class="how-icon">✍️</div>
+        <h4>Describe Your Need</h4>
+        <p>Type anything in plain English — product, spec, quantity, city.</p>
       </div>
-      <div class="trust-item">
-        <div class="trust-icon">🔒</div>
-        <h4>Secure Login</h4>
-        <p>Google OAuth + OTP authentication. No passwords to remember.</p>
+      <div class="how-arrow">→</div>
+      <div class="how-step">
+        <div class="how-num" style="background:#0ea5e9">2</div>
+        <div class="how-icon">🤖</div>
+        <h4>AI Finds Suppliers</h4>
+        <p>Our AI matches your query to verified Indian suppliers instantly.</p>
       </div>
-      <div class="trust-item">
-        <div class="trust-icon">💬</div>
-        <h4>WhatsApp First</h4>
-        <p>Connect directly on WhatsApp — the way India does business.</p>
-      </div>
-      <div class="trust-item">
-        <div class="trust-icon">🤖</div>
-        <h4>AI-Powered</h4>
-        <p>Natural language search built for Indian SME requirements.</p>
+      <div class="how-arrow">→</div>
+      <div class="how-step">
+        <div class="how-num" style="background:#10b981">3</div>
+        <div class="how-icon">💬</div>
+        <h4>Contact on WhatsApp</h4>
+        <p>Get phone numbers and WhatsApp links. Connect directly — no middleman.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── CTA ── -->
-<section class="cta-section">
-  <div class="container cta-inner">
-    <h2>Ready to find suppliers smarter?</h2>
-    <p>Join 50,000+ Indian businesses already using BazaarAI</p>
-    <div class="cta-actions">
-      <button class="btn btn-white btn-lg" id="ctaBuyerBtn">Start Searching Free</button>
-      <a href="seller.html" class="btn btn-outline-white btn-lg">List Your Business</a>
+<!-- SELLER CTA STRIP -->
+<section class="seller-strip">
+  <div class="container seller-strip-inner">
+    <div>
+      <h3>Are you a supplier or manufacturer?</h3>
+      <p>Upload your catalog once — buyers find you through AI search automatically.</p>
     </div>
+    <a href="seller.html" class="btn-strip">List Your Business Free →</a>
   </div>
 </section>
 
-<!-- ── FOOTER ── -->
+<!-- FOOTER -->
 <footer class="footer">
-  <div class="container footer-inner">
-    <div class="footer-brand">
-      <div class="brand-icon">B</div>
-      <div>
-        <p class="brand-name">BazaarAI</p>
-        <p class="footer-tagline">India's AI-Powered B2B Marketplace</p>
-      </div>
-    </div>
-    <div class="footer-links-grid">
-      <div><p class="fl-head">Platform</p><a href="#">Search Suppliers</a><a href="seller.html">Sell on BazaarAI</a><a href="#">Pricing</a></div>
-      <div><p class="fl-head">Company</p><a href="#">About</a><a href="#">Blog</a><a href="#">Careers</a></div>
-      <div><p class="fl-head">Support</p><a href="#">Help Center</a><a href="#">Contact</a><a href="#">Terms</a></div>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <div class="container"><p>© 2025 BazaarAI. Made in India 🇮🇳</p><p>AI-powered B2B search for Indian SMEs</p></div>
+  <div class="container ftr-inner">
+    <p class="ftr-logo">🏪 BazaarAI</p>
+    <p class="ftr-sub">India's AI-Powered B2B Marketplace · Made in India 🇮🇳</p>
+    <p class="ftr-copy">© 2025 BazaarAI. All rights reserved.</p>
   </div>
 </footer>
 

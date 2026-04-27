@@ -3,330 +3,175 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Seller Dashboard — BazaarAI</title>
+  <title>Seller Portal — BazaarAI</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body class="seller-page">
+<body>
 
-<!-- ── HEADER ── -->
-<header class="header" id="header">
-  <div class="container header-inner">
-    <a href="index.html" class="brand">
-      <div class="brand-icon">B</div>
-      <div class="brand-text">
-        <span class="brand-name">BazaarAI</span>
-        <span class="brand-sub">Seller Portal</span>
-      </div>
+<!-- HEADER -->
+<header class="header">
+  <div class="container hdr-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-icon">🏪</span>
+      <span class="logo-text">BazaarAI</span>
     </a>
-    <nav class="header-nav">
-      <a href="index.html">← Back to Marketplace</a>
+    <nav class="hdr-nav">
+      <a href="index.html">← Back to Search</a>
     </nav>
-    <div class="header-actions">
-      <button class="btn btn-accent" id="sellerLoginBtn">Sign In / Register</button>
-    </div>
   </div>
 </header>
 
-<!-- ── ONBOARDING (shown before login) ── -->
-<section class="seller-hero" id="sellerHero">
+<!-- SELLER HERO -->
+<section class="seller-hero">
   <div class="container seller-hero-inner">
     <div class="seller-hero-text">
-      <div class="hero-badge"><span class="pulse-dot"></span> Free to List · AI-Powered · WhatsApp Leads</div>
-      <h1>Turn your catalog into<br /><span class="gradient-text">AI-searchable listings</span></h1>
-      <p class="hero-sub">Upload your product docs, images, or catalog PDF. Our AI structures everything into a searchable profile that buyers find instantly.</p>
-      <div class="seller-benefits">
-        <div class="benefit"><span>✓</span> Free business listing</div>
-        <div class="benefit"><span>✓</span> AI reads your catalog automatically</div>
-        <div class="benefit"><span>✓</span> Leads via WhatsApp — no cold calls</div>
-        <div class="benefit"><span>✓</span> Appear in AI search results instantly</div>
+      <p class="seller-tag">🚀 Free · No Commission · Instant Leads</p>
+      <h1>Get Buyers Finding You<br /><span class="orange-text">Through AI Search</span></h1>
+      <p class="seller-sub">Upload your catalog or product details once. Our AI makes you discoverable to thousands of buyers searching right now.</p>
+      <div class="seller-perks">
+        <div class="perk"><span class="perk-icon" style="background:#fff3e0;color:#f97316">✓</span> Free business listing</div>
+        <div class="perk"><span class="perk-icon" style="background:#e8f5e9;color:#16a34a">✓</span> AI structures your catalog automatically</div>
+        <div class="perk"><span class="perk-icon" style="background:#e3f2fd;color:#1565c0">✓</span> Buyers contact you directly on WhatsApp</div>
+        <div class="perk"><span class="perk-icon" style="background:#f3e5f5;color:#7b1fa2">✓</span> No monthly fees or lead charges</div>
       </div>
-      <button class="btn btn-accent btn-lg" id="startOnboarding">Get Started Free →</button>
     </div>
-    <div class="seller-hero-visual">
-      <div class="upload-preview-card">
-        <div class="upc-header">
-          <div class="upc-avatar">SM</div>
+    <div class="seller-hero-card">
+      <div class="preview-label">📋 Sample Seller Profile</div>
+      <div class="preview-card">
+        <div class="pc-top">
+          <div class="pc-avatar">SM</div>
           <div>
-            <p class="upc-name">Swastik Metals</p>
-            <p class="upc-loc">📍 Greater Noida, UP</p>
+            <p class="pc-name">Swastik Metal Components</p>
+            <p class="pc-loc">📍 Greater Noida, UP</p>
           </div>
-          <span class="verified-badge">✓ Verified</span>
+          <span class="pc-badge">✓ Verified</span>
         </div>
-        <div class="upc-tags"><span>Nickel Strips</span><span>Copper Busbars</span><span>Battery Components</span></div>
-        <div class="upc-stats">
-          <div><strong>25 T</strong><p>Monthly Capacity</p></div>
-          <div><strong>4.8★</strong><p>Rating</p></div>
-          <div><strong>2 hrs</strong><p>Response Time</p></div>
+        <div class="pc-tags">
+          <span>Nickel Strips</span>
+          <span>Copper Busbars</span>
+          <span>Battery Parts</span>
         </div>
-        <div class="upc-ai-tag">🤖 AI-structured from catalog PDF</div>
+        <div class="pc-contacts">
+          <a class="pc-phone">📞 +91 81126 62827</a>
+          <a class="pc-wa">💬 WhatsApp</a>
+        </div>
+        <div class="pc-ai-note">🤖 AI-structured from uploaded catalog PDF</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── ONBOARDING WIZARD ── -->
-<section class="onboarding-wizard hidden" id="onboardingWizard">
-  <div class="container wizard-wrap">
+<!-- MAIN SELLER FLOW -->
+<section class="seller-flow">
+  <div class="container seller-flow-inner">
 
-    <!-- PROGRESS BAR -->
-    <div class="wizard-progress">
-      <div class="wp-step active" data-step="1"><div class="wp-dot">1</div><span>Business Info</span></div>
-      <div class="wp-line"></div>
-      <div class="wp-step" data-step="2"><div class="wp-dot">2</div><span>Products</span></div>
-      <div class="wp-line"></div>
-      <div class="wp-step" data-step="3"><div class="wp-dot">3</div><span>Upload Catalog</span></div>
-      <div class="wp-line"></div>
-      <div class="wp-step" data-step="4"><div class="wp-dot">4</div><span>AI Processing</span></div>
+    <!-- STEP 1: LOGIN (shown by default) -->
+    <div class="flow-card" id="stepLogin">
+      <div class="flow-step-badge orange">Step 1 of 2</div>
+      <h2>Sign in with Google</h2>
+      <p class="flow-sub">We use your Google account to verify your identity. Takes 5 seconds.</p>
+      <button class="btn-google" id="googleLoginBtn">
+        <svg width="20" height="20" viewBox="0 0 24 24">
+          <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+          <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+          <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/>
+          <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+        </svg>
+        Continue with Google
+      </button>
+      <p class="flow-note">By signing in you agree to our Terms of Service.</p>
     </div>
 
-    <!-- STEP 1: Business Info -->
-    <div class="wizard-step active" id="step1">
-      <h2>Tell us about your business</h2>
-      <p class="step-sub">This creates your verified seller profile.</p>
-      <div class="wiz-form">
-        <div class="form-row">
-          <label>Business / Company Name *<input type="text" placeholder="e.g. Swastik Metal Components" /></label>
-          <label>GST Number *<input type="text" placeholder="e.g. 09ABCDE1234F1Z5" maxlength="15" /></label>
-        </div>
-        <div class="form-row">
-          <label>Owner / Contact Name *<input type="text" placeholder="Full name" /></label>
-          <label>Mobile (WhatsApp) *<input type="tel" placeholder="+91 XXXXX XXXXX" /></label>
-        </div>
-        <div class="form-row">
-          <label>Business Email<input type="email" placeholder="you@business.com" /></label>
-          <label>City / District *<input type="text" placeholder="e.g. Greater Noida" /></label>
-        </div>
-        <label>Business Address *<textarea rows="2" placeholder="Full address with PIN code"></textarea></label>
-        <div class="form-row">
-          <label>State *
-            <select>
-              <option>Uttar Pradesh</option><option>Delhi</option><option>Maharashtra</option><option>Gujarat</option><option>Karnataka</option><option>Tamil Nadu</option><option>Rajasthan</option><option>Haryana</option><option>Punjab</option><option>West Bengal</option>
-            </select>
+    <!-- STEP 2: UPLOAD (hidden until login) -->
+    <div class="flow-card hidden" id="stepUpload">
+      <div class="flow-step-badge blue">Step 2 of 2</div>
+      <div class="logged-in-bar" id="loggedInBar">
+        <span class="logged-in-dot"></span>
+        <span id="loggedInEmail">you@gmail.com</span>
+        <span class="logged-in-check">✓ Signed In</span>
+      </div>
+      <h2>Upload Your Business Details</h2>
+      <p class="flow-sub">Upload anything — catalog PDF, product images, price list, brochure. Our AI reads and structures it all.</p>
+
+      <!-- Quick Info -->
+      <div class="quick-info">
+        <div class="qi-row">
+          <label>Business Name *
+            <input type="text" id="bizName" placeholder="e.g. Swastik Metal Components" />
           </label>
-          <label>Business Type *
-            <select>
-              <option>Manufacturer</option><option>Distributor / Trader</option><option>Manufacturer + Distributor</option><option>Service Provider</option><option>Exporter</option>
-            </select>
+          <label>WhatsApp Number *
+            <div class="wa-input-row">
+              <span class="wa-prefix">🇮🇳 +91</span>
+              <input type="tel" id="waNumber" placeholder="10-digit number" maxlength="10" />
+            </div>
           </label>
         </div>
-        <div class="form-row">
-          <label>Annual Turnover
-            <select>
-              <option>Below ₹50 Lakh</option><option>₹50L – ₹1 Crore</option><option>₹1–5 Crore</option><option>₹5–25 Crore</option><option>Above ₹25 Crore</option>
-            </select>
+        <div class="qi-row">
+          <label>City / Location *
+            <input type="text" id="bizCity" placeholder="e.g. Greater Noida, UP" />
           </label>
-          <label>No. of Employees
-            <select>
-              <option>1–10</option><option>11–50</option><option>51–200</option><option>200+</option>
-            </select>
+          <label>What do you sell? *
+            <input type="text" id="bizProduct" placeholder="e.g. Nickel strips, copper busbars" />
           </label>
-        </div>
-        <div class="step-actions">
-          <button class="btn btn-accent btn-lg" onclick="goStep(2)">Next: Products →</button>
         </div>
       </div>
+
+      <!-- Upload Zone -->
+      <div class="upload-zone" id="uploadZone"
+           ondragover="event.preventDefault(); this.classList.add('drag-over')"
+           ondragleave="this.classList.remove('drag-over')"
+           ondrop="handleDrop(event)">
+        <div class="uz-idle" id="uzIdle">
+          <div class="uz-icon">📂</div>
+          <p class="uz-title">Drag &amp; drop your files here</p>
+          <p class="uz-sub">Catalog PDF · Product images · Price list · Brochure · Any format</p>
+          <input type="file" id="fileInput" multiple accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png,.ppt,.pptx" hidden />
+          <button class="btn-choose" onclick="document.getElementById('fileInput').click()">Choose Files</button>
+        </div>
+        <div class="uz-files hidden" id="uzFiles">
+          <div class="uz-files-list" id="uzFilesList"></div>
+          <button class="btn-add-more" onclick="document.getElementById('fileInput').click()">+ Add More Files</button>
+        </div>
+      </div>
+
+      <button class="btn-submit" id="submitBtn">
+        🚀 Submit & Go Live
+      </button>
+      <p class="flow-note">Our AI will process your files within 2 minutes and make your listing live.</p>
     </div>
 
-    <!-- STEP 2: Products -->
-    <div class="wizard-step hidden" id="step2">
-      <h2>What do you sell?</h2>
-      <p class="step-sub">Add your main products or services. You can add more later.</p>
-      <div class="products-builder" id="productsBuilder">
-        <div class="product-entry" id="productEntry0">
-          <div class="pe-header"><span class="pe-num">Product 1</span><button class="pe-remove hidden" onclick="removeProduct(0)">✕</button></div>
-          <div class="form-row">
-            <label>Product Name *<input type="text" placeholder="e.g. Nickel Plated Strips" /></label>
-            <label>Category *
-              <select>
-                <option>Battery Components</option><option>Metals & Alloys</option><option>Electronics</option><option>Machinery</option><option>Packaging</option><option>Chemicals</option><option>Textiles</option><option>Auto Parts</option><option>Other</option>
-              </select>
-            </label>
-          </div>
-          <label>Description<textarea rows="2" placeholder="Key specs, grades, sizes, applications…"></textarea></label>
-          <div class="form-row">
-            <label>Min. Order Qty<input type="text" placeholder="e.g. 10 kg / 100 pcs" /></label>
-            <label>Price Range (₹)<input type="text" placeholder="e.g. ₹500–₹800/kg" /></label>
-          </div>
-        </div>
+    <!-- STEP 3: SUCCESS (hidden) -->
+    <div class="flow-card hidden" id="stepSuccess">
+      <div class="success-top">
+        <div class="success-tick">✓</div>
+        <h2>You're Live! 🎉</h2>
+        <p class="flow-sub">Your listing is now discoverable by buyers searching on BazaarAI. Leads will arrive on your WhatsApp.</p>
       </div>
-      <button class="btn btn-outline add-product-btn" id="addProductBtn">+ Add Another Product</button>
-      <div class="step-actions">
-        <button class="btn btn-ghost-dark" onclick="goStep(1)">← Back</button>
-        <button class="btn btn-accent btn-lg" onclick="goStep(3)">Next: Upload Catalog →</button>
+      <div class="success-stats">
+        <div class="ss"><span class="ss-n" id="ssProducts">0</span><span class="ss-l">Products Indexed</span></div>
+        <div class="ss"><span class="ss-n" id="ssKeywords">0</span><span class="ss-l">Search Keywords</span></div>
+        <div class="ss"><span class="ss-n" id="ssTime">--</span><span class="ss-l">Avg Response Time</span></div>
       </div>
-    </div>
-
-    <!-- STEP 3: Upload -->
-    <div class="wizard-step hidden" id="step3">
-      <h2>Upload your catalog & documents</h2>
-      <p class="step-sub">Our AI will read everything and structure it into searchable listings automatically.</p>
-      <div class="upload-grid">
-        <div class="upload-zone" id="catalogZone" ondragover="event.preventDefault()" ondrop="handleDrop(event,'catalog')">
-          <div class="uz-icon">📄</div>
-          <p class="uz-title">Product Catalog / Brochure</p>
-          <p class="uz-sub">PDF, Word, Excel — AI extracts all product data</p>
-          <input type="file" id="catalogFile" accept=".pdf,.doc,.docx,.xls,.xlsx" hidden onchange="handleFileSelect(this,'catalog')" />
-          <button class="btn btn-outline" onclick="document.getElementById('catalogFile').click()">Choose File</button>
-          <div class="uz-preview hidden" id="catalogPreview"></div>
-        </div>
-        <div class="upload-zone" id="imagesZone" ondragover="event.preventDefault()" ondrop="handleDrop(event,'images')">
-          <div class="uz-icon">🖼️</div>
-          <p class="uz-title">Product Images</p>
-          <p class="uz-sub">JPG, PNG — AI captions and tags automatically</p>
-          <input type="file" id="imagesFile" accept="image/*" multiple hidden onchange="handleFileSelect(this,'images')" />
-          <button class="btn btn-outline" onclick="document.getElementById('imagesFile').click()">Choose Images</button>
-          <div class="uz-preview hidden" id="imagesPreview"></div>
-        </div>
-        <div class="upload-zone" id="docsZone" ondragover="event.preventDefault()" ondrop="handleDrop(event,'docs')">
-          <div class="uz-icon">📋</div>
-          <p class="uz-title">Business Documents</p>
-          <p class="uz-sub">GST cert, MSME, ISO — builds buyer trust</p>
-          <input type="file" id="docsFile" accept=".pdf,.jpg,.png" multiple hidden onchange="handleFileSelect(this,'docs')" />
-          <button class="btn btn-outline" onclick="document.getElementById('docsFile').click()">Choose Docs</button>
-          <div class="uz-preview hidden" id="docsPreview"></div>
-        </div>
-      </div>
-      <div class="step-actions">
-        <button class="btn btn-ghost-dark" onclick="goStep(2)">← Back</button>
-        <button class="btn btn-accent btn-lg" onclick="goStep(4)">Submit & Process with AI →</button>
-      </div>
-    </div>
-
-    <!-- STEP 4: AI Processing -->
-    <div class="wizard-step hidden" id="step4">
-      <div class="ai-processing" id="aiProcessing">
-        <div class="ai-proc-icon">🤖</div>
-        <h2>AI is processing your catalog…</h2>
-        <p class="step-sub">This takes about 30 seconds. Sit tight!</p>
-        <div class="proc-steps" id="procSteps">
-          <div class="proc-step pending" id="proc1"><span class="proc-spinner"></span> Reading catalog & extracting product data…</div>
-          <div class="proc-step pending" id="proc2"><span class="proc-spinner"></span> Structuring product listings & specs…</div>
-          <div class="proc-step pending" id="proc3"><span class="proc-spinner"></span> Generating search keywords & tags…</div>
-          <div class="proc-step pending" id="proc4"><span class="proc-spinner"></span> Creating seller profile & FAQs…</div>
-          <div class="proc-step pending" id="proc5"><span class="proc-spinner"></span> Verifying business documents…</div>
-        </div>
-      </div>
-      <!-- Success State (hidden initially) -->
-      <div class="ai-success hidden" id="aiSuccess">
-        <div class="success-checkmark">✓</div>
-        <h2>Your listing is live! 🎉</h2>
-        <p class="step-sub">BazaarAI has structured your catalog into <strong>12 searchable product listings</strong>. Buyers can now find you instantly.</p>
-        <div class="success-stats">
-          <div class="ss-item"><span class="ss-num">12</span><span class="ss-label">Products Listed</span></div>
-          <div class="ss-item"><span class="ss-num">48</span><span class="ss-label">Keywords Generated</span></div>
-          <div class="ss-item"><span class="ss-num">3</span><span class="ss-label">Docs Verified</span></div>
-        </div>
-        <div class="success-actions">
-          <button class="btn btn-accent btn-lg" onclick="showDashboard()">View My Dashboard →</button>
-          <a href="index.html" class="btn btn-outline btn-lg">See How Buyers Find Me</a>
-        </div>
+      <div class="success-actions">
+        <a href="index.html" class="btn-primary-big">See How Buyers Find You →</a>
+        <button class="btn-outline-big" onclick="addMoreDocs()">Upload More Documents</button>
       </div>
     </div>
 
   </div>
 </section>
 
-<!-- ── SELLER DASHBOARD ── -->
-<section class="seller-dashboard hidden" id="sellerDashboard">
-  <div class="container">
-    <div class="dashboard-header">
-      <div>
-        <h2>Welcome back, <span id="dashName">Swastik Metals</span></h2>
-        <p class="dash-sub">Your listing is active and getting discovered</p>
-      </div>
-      <div class="dash-header-actions">
-        <button class="btn btn-outline">Edit Profile</button>
-        <button class="btn btn-accent">+ Add Product</button>
-      </div>
-    </div>
-
-    <!-- KPI CARDS -->
-    <div class="kpi-grid">
-      <div class="kpi-card">
-        <div class="kpi-icon">👁️</div>
-        <div class="kpi-val" data-target="1284">0</div>
-        <div class="kpi-label">Profile Views (30d)</div>
-        <div class="kpi-trend up">↑ 23% vs last month</div>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-icon">💬</div>
-        <div class="kpi-val" data-target="47">0</div>
-        <div class="kpi-label">WhatsApp Enquiries</div>
-        <div class="kpi-trend up">↑ 18% vs last month</div>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-icon">🔍</div>
-        <div class="kpi-val" data-target="326">0</div>
-        <div class="kpi-label">Search Appearances</div>
-        <div class="kpi-trend up">↑ 41% vs last month</div>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-icon">⭐</div>
-        <div class="kpi-val" data-target="48" data-decimal="true">0</div>
-        <div class="kpi-label">Avg. Rating</div>
-        <div class="kpi-trend neutral">12 reviews</div>
-      </div>
-    </div>
-
-    <!-- RECENT LEADS -->
-    <div class="dash-section">
-      <div class="dash-section-head">
-        <h3>Recent Buyer Enquiries</h3>
-        <button class="btn btn-outline tiny">View All</button>
-      </div>
-      <div class="leads-table">
-        <div class="leads-head"><span>Buyer</span><span>Query</span><span>Location</span><span>Time</span><span>Action</span></div>
-        <div class="lead-row">
-          <div class="lead-buyer"><div class="lead-avatar">RK</div><div><p>Rajesh Kumar</p><p class="lead-co">RK Energy Pvt Ltd</p></div></div>
-          <div class="lead-query">"Need 100kg pure nickel 0.15mm for battery pack"</div>
-          <div class="lead-loc">📍 Pune, MH</div>
-          <div class="lead-time">2 hrs ago</div>
-          <div><a href="https://wa.me/918112662827?text=Hi%2C+I+saw+your+listing+on+BazaarAI" target="_blank" class="btn btn-wa tiny">WhatsApp</a></div>
-        </div>
-        <div class="lead-row">
-          <div class="lead-buyer"><div class="lead-avatar">AM</div><div><p>Amit Mehta</p><p class="lead-co">Greentech Solutions</p></div></div>
-          <div class="lead-query">"Copper busbar custom shape 6mm × 30mm, 500 pcs"</div>
-          <div class="lead-loc">📍 Bangalore, KA</div>
-          <div class="lead-time">5 hrs ago</div>
-          <div><a href="https://wa.me/918112662827?text=Hi%2C+I+saw+your+listing+on+BazaarAI" target="_blank" class="btn btn-wa tiny">WhatsApp</a></div>
-        </div>
-        <div class="lead-row">
-          <div class="lead-buyer"><div class="lead-avatar">PS</div><div><p>Priya Sharma</p><p class="lead-co">SolarMax India</p></div></div>
-          <div class="lead-query">"Aluminium busbar for solar inverter, 1000 pcs/month"</div>
-          <div class="lead-loc">📍 Jaipur, RJ</div>
-          <div class="lead-time">1 day ago</div>
-          <div><a href="https://wa.me/918112662827?text=Hi%2C+I+saw+your+listing+on+BazaarAI" target="_blank" class="btn btn-wa tiny">WhatsApp</a></div>
-        </div>
-        <div class="lead-row">
-          <div class="lead-buyer"><div class="lead-avatar">VN</div><div><p>Vikram Nair</p><p class="lead-co">EV Pack Technologies</p></div></div>
-          <div class="lead-query">"Nickel plated strip sample 20mm × 0.2mm, urgent"</div>
-          <div class="lead-loc">📍 Chennai, TN</div>
-          <div class="lead-time">2 days ago</div>
-          <div><a href="https://wa.me/918112662827?text=Hi%2C+I+saw+your+listing+on+BazaarAI" target="_blank" class="btn btn-wa tiny">WhatsApp</a></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- LISTED PRODUCTS -->
-    <div class="dash-section">
-      <div class="dash-section-head">
-        <h3>Your AI-Structured Listings</h3>
-        <button class="btn btn-outline tiny">Manage All</button>
-      </div>
-      <div class="listed-products">
-        <div class="lp-card"><div class="lp-img">🔧</div><div class="lp-info"><p class="lp-name">Nickel Plated Strips</p><p class="lp-meta">48 keywords · 210 views</p></div><span class="lp-status active">Active</span></div>
-        <div class="lp-card"><div class="lp-img">⚡</div><div class="lp-info"><p class="lp-name">Pure Nickel Strips</p><p class="lp-meta">36 keywords · 184 views</p></div><span class="lp-status active">Active</span></div>
-        <div class="lp-card"><div class="lp-img">🔌</div><div class="lp-info"><p class="lp-name">Copper Busbars</p><p class="lp-meta">52 keywords · 312 views</p></div><span class="lp-status active">Active</span></div>
-        <div class="lp-card"><div class="lp-img">🏗️</div><div class="lp-info"><p class="lp-name">Aluminium Busbars</p><p class="lp-meta">29 keywords · 98 views</p></div><span class="lp-status active">Active</span></div>
-        <div class="lp-card lp-add" onclick="goStep(2); showWizard()"><div class="lp-img">+</div><div class="lp-info"><p class="lp-name">Add New Product</p><p class="lp-meta">Let AI structure it</p></div></div>
-      </div>
-    </div>
-
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container ftr-inner">
+    <p class="ftr-logo">🏪 BazaarAI</p>
+    <p class="ftr-sub">India's AI-Powered B2B Marketplace · Made in India 🇮🇳</p>
+    <p class="ftr-copy">© 2025 BazaarAI. All rights reserved.</p>
   </div>
-</section>
+</footer>
 
 <script src="script.js"></script>
 </body>
