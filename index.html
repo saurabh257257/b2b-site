@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BazaarAI — India's B2B Marketplace</title>
+  <title>BazaarAI — Ask Anything, Find Any Supplier</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet" />
@@ -11,144 +11,93 @@
 </head>
 <body>
 
-<!-- HEADER -->
-<header class="header">
-  <div class="container hdr-inner">
-    <a href="index.html" class="logo">
-      <span class="logo-icon">🏪</span>
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-top">
+    <div class="sidebar-logo">
+      <span>🏪</span>
       <span class="logo-text">BazaarAI</span>
-    </a>
-    <nav class="hdr-nav">
-      <a href="#categories">Categories</a>
-      <a href="seller.html" class="hdr-seller-link">Are you a Seller? →</a>
-    </nav>
-  </div>
-</header>
-
-<!-- HERO / SEARCH -->
-<section class="hero">
-  <div class="hero-top">
-    <p class="hero-tag">🇮🇳 India's AI-Powered B2B Marketplace</p>
-    <h1>Find Any Supplier.<br />Just Describe What You Need.</h1>
-    <p class="hero-sub">Get verified supplier contacts &amp; WhatsApp in seconds — no sign-up needed.</p>
-  </div>
-
-  <div class="search-wrap">
-    <div class="search-bar">
-      <span class="search-mag">🔍</span>
-      <input
-        type="text"
-        id="queryInput"
-        class="search-input"
-        placeholder="e.g. nickel strips 0.15mm for battery packs, Delhi"
-        autocomplete="off"
-      />
-      <button class="search-go" id="searchBtn">Search</button>
     </div>
-    <div class="search-chips">
-      <span class="chip-label">Popular:</span>
-      <button class="chip" data-q="nickel strips for battery manufacturing">Nickel Strips</button>
-      <button class="chip" data-q="copper busbars custom size">Copper Busbars</button>
-      <button class="chip" data-q="HDPE packaging bags bulk order">HDPE Bags</button>
-      <button class="chip" data-q="steel fasteners bolts nuts wholesale">Steel Fasteners</button>
-      <button class="chip" data-q="aluminium extrusions profiles manufacturer">Aluminium Profiles</button>
-    </div>
+    <button class="new-chat-btn" id="newChatBtn">+ New Search</button>
   </div>
-</section>
-
-<!-- RESULTS (hidden until search) -->
-<section class="results-wrap" id="resultsWrap" style="display:none">
-  <div class="container">
-    <div class="results-meta">
-      <p class="results-query" id="resultsQuery"></p>
-      <button class="clear-btn" id="clearBtn">← New Search</button>
-    </div>
-    <div class="ai-answer-box" id="aiAnswerBox"></div>
-    <div class="contacts-grid" id="contactsGrid"></div>
+  <div class="sidebar-history">
+    <p class="sidebar-section-label">Suggestions</p>
+    <button class="history-item" data-q="I need nickel strips 0.15mm thick for 18650 battery pack assembly in Pune">🔋 Nickel strips for batteries</button>
+    <button class="history-item" data-q="Looking for copper busbar manufacturer who can do custom shapes, need 500 pieces">⚡ Copper busbars custom</button>
+    <button class="history-item" data-q="Need HDPE bags bulk order, 10000 pieces, custom print, Mumbai delivery">📦 HDPE packaging bags</button>
+    <button class="history-item" data-q="Steel fasteners grade 8.8, bolts and nuts, 2 tonnes, Delhi NCR supplier">🔩 Steel fasteners bulk</button>
+    <button class="history-item" data-q="Aluminium extrusion profiles for solar panel mounting structure">☀️ Aluminium for solar</button>
+    <button class="history-item" data-q="Industrial PCB components and sensors, RoHS certified, low MOQ">💡 Electronics components</button>
   </div>
-</section>
-
-<!-- CATEGORIES -->
-<section class="categories" id="categories">
-  <div class="container">
-    <h2 class="sec-title">Browse by Category</h2>
-    <div class="cat-grid">
-      <button class="cat-tile" style="--c:#ff6b35" data-q="battery components nickel strip copper busbar manufacturer India">
-        <span>🔋</span><strong>Battery Components</strong><small>1,240+ suppliers</small>
-      </button>
-      <button class="cat-tile" style="--c:#0ea5e9" data-q="industrial machinery CNC equipment manufacturer India">
-        <span>⚙️</span><strong>Machinery</strong><small>8,500+ suppliers</small>
-      </button>
-      <button class="cat-tile" style="--c:#8b5cf6" data-q="steel iron aluminium metal raw material supplier bulk">
-        <span>🏭</span><strong>Metals & Alloys</strong><small>6,200+ suppliers</small>
-      </button>
-      <button class="cat-tile" style="--c:#10b981" data-q="HDPE PP industrial packaging material bags manufacturer">
-        <span>📦</span><strong>Packaging</strong><small>4,800+ suppliers</small>
-      </button>
-      <button class="cat-tile" style="--c:#f59e0b" data-q="PCB electronic components sensors relays manufacturer India">
-        <span>💡</span><strong>Electronics</strong><small>5,100+ suppliers</small>
-      </button>
-      <button class="cat-tile" style="--c:#ef4444" data-q="cotton polyester textile fabric yarn wholesale manufacturer">
-        <span>🧵</span><strong>Textiles</strong><small>9,300+ suppliers</small>
-      </button>
-      <button class="cat-tile" style="--c:#06b6d4" data-q="industrial chemical raw material polymer supplier">
-        <span>🧪</span><strong>Chemicals</strong><small>3,700+ suppliers</small>
-      </button>
-      <button class="cat-tile" style="--c:#84cc16" data-q="automobile auto parts engine components spare parts manufacturer">
-        <span>🚗</span><strong>Auto Parts</strong><small>7,400+ suppliers</small>
-      </button>
-    </div>
+  <div class="sidebar-bottom">
+    <a href="seller.html" class="sidebar-seller-link">🏭 List Your Business</a>
   </div>
-</section>
+</aside>
 
-<!-- HOW IT WORKS -->
-<section class="how-section">
-  <div class="container">
-    <h2 class="sec-title">How It Works</h2>
-    <div class="how-steps">
-      <div class="how-step">
-        <div class="how-num" style="background:#ff6b35">1</div>
-        <div class="how-icon">✍️</div>
-        <h4>Describe Your Need</h4>
-        <p>Type anything in plain English — product, spec, quantity, city.</p>
-      </div>
-      <div class="how-arrow">→</div>
-      <div class="how-step">
-        <div class="how-num" style="background:#0ea5e9">2</div>
-        <div class="how-icon">🤖</div>
-        <h4>AI Finds Suppliers</h4>
-        <p>Our AI matches your query to verified Indian suppliers instantly.</p>
-      </div>
-      <div class="how-arrow">→</div>
-      <div class="how-step">
-        <div class="how-num" style="background:#10b981">3</div>
-        <div class="how-icon">💬</div>
-        <h4>Contact on WhatsApp</h4>
-        <p>Get phone numbers and WhatsApp links. Connect directly — no middleman.</p>
+<!-- MAIN CHAT AREA -->
+<main class="chat-main" id="chatMain">
+
+  <!-- TOP BAR -->
+  <div class="chat-topbar">
+    <button class="topbar-menu" id="menuBtn">☰</button>
+    <div class="topbar-brand">
+      <span>🏪</span>
+      <span>BazaarAI</span>
+      <span class="topbar-sub">India's B2B AI Marketplace</span>
+    </div>
+    <a href="seller.html" class="topbar-seller-btn">For Sellers →</a>
+  </div>
+
+  <!-- MESSAGES -->
+  <div class="messages-area" id="messagesArea">
+
+    <!-- WELCOME SCREEN (shown initially) -->
+    <div class="welcome-screen" id="welcomeScreen">
+      <div class="welcome-logo">🏪</div>
+      <h1 class="welcome-title">BazaarAI</h1>
+      <p class="welcome-sub">Ask me anything about suppliers, products, or manufacturers in India.<br />I'll find verified contacts with phone &amp; WhatsApp instantly.</p>
+      <div class="welcome-examples">
+        <button class="example-card" data-q="I need pure nickel strips 0.15mm thick for battery manufacturing, 100kg, Delhi delivery">
+          <span class="ex-icon">🔋</span>
+          <span class="ex-text">Nickel strips for battery manufacturing</span>
+        </button>
+        <button class="example-card" data-q="Find me a copper busbar manufacturer near Greater Noida who can do custom dimensions with no tooling cost">
+          <span class="ex-icon">⚡</span>
+          <span class="ex-text">Custom copper busbars, Greater Noida</span>
+        </button>
+        <button class="example-card" data-q="Who are the top packaging bag manufacturers in Mumbai for HDPE bags, I need 10000 pieces">
+          <span class="ex-icon">📦</span>
+          <span class="ex-text">HDPE packaging bags, Mumbai</span>
+        </button>
+        <button class="example-card" data-q="I want to buy steel fasteners bolts grade 8.8 in bulk, 2 tonnes, who should I contact in Delhi NCR">
+          <span class="ex-icon">🔩</span>
+          <span class="ex-text">Steel fasteners bulk order, Delhi</span>
+        </button>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- SELLER CTA STRIP -->
-<section class="seller-strip">
-  <div class="container seller-strip-inner">
-    <div>
-      <h3>Are you a supplier or manufacturer?</h3>
-      <p>Upload your catalog once — buyers find you through AI search automatically.</p>
+    <!-- CHAT MESSAGES will be injected here -->
+    <div id="chatMessages"></div>
+
+  </div>
+
+  <!-- INPUT BAR -->
+  <div class="input-area">
+    <div class="input-box">
+      <textarea
+        id="userInput"
+        class="user-textarea"
+        placeholder="Ask about any product, supplier, or manufacturer in India…"
+        rows="1"
+      ></textarea>
+      <button class="send-btn" id="sendBtn" disabled>
+        <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+      </button>
     </div>
-    <a href="seller.html" class="btn-strip">List Your Business Free →</a>
+    <p class="input-note">BazaarAI finds verified Indian suppliers · Direct phone &amp; WhatsApp contacts</p>
   </div>
-</section>
 
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="container ftr-inner">
-    <p class="ftr-logo">🏪 BazaarAI</p>
-    <p class="ftr-sub">India's AI-Powered B2B Marketplace · Made in India 🇮🇳</p>
-    <p class="ftr-copy">© 2025 BazaarAI. All rights reserved.</p>
-  </div>
-</footer>
+</main>
 
 <script src="script.js"></script>
 </body>
